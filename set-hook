@@ -6,7 +6,7 @@ LOCAL_HOOKS_DIR=./hooks
 
 declare -A HELP_FLAGS
 
-HELP_FLAGS[help]="Usage: \e[32msh $0\e[0m"
+HELP_FLAGS[help]="Usage: \e[32msh $0 <folder>\e[0m"
 HELP_FLAGS[gitdir]="\e[31m.git\e[0m directory not found. Not a git repository!\n"
 
 usage() {
@@ -21,7 +21,17 @@ usage() {
 move_hooks() {
 	hook_dir=$1
 
-	cp ${LOCAL_HOOKS_DIR}/$hook_dir/* $GIT_HOOKS_DIR
+	for hook in ${LOCAL_HOOKS_DIR}/$hook_dir/*; do
+		printf "Moving hook \e[32m${hook}\e[0m\n"
+
+		# make it executable
+		chmod +x $hook
+
+		# rm .sample prefix and cp to .git/hooks
+		cp $hook $GIT_HOOKS_DIR/$(basename -- ${hook%.*})
+	done
+
+	echo "DONE"
 }
 
 parse_args() {
@@ -30,7 +40,7 @@ parse_args() {
 	if [[ ${!HELP_FLAGS[@]} =~ $arg ]]; then
 		usage $arg
 	elif [[ -d ${LOCAL_HOOKS_DIR}/$arg ]]; then
-		 move_hooks
+		move_hooks $arg
 	else
 		usage help
 	fi
@@ -43,5 +53,3 @@ if [[ $# -ge 1 ]]; then
 		parse_args $arg
 	done
 fi
-
-echo "All done"

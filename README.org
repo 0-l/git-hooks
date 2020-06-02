@@ -1,5 +1,21 @@
 #+TITLE: Git hooks
 
-(WIP) Custom git hooks for various occasions.
+(WIP) Custom git hooks for various setups, mainly to prevent myself from pushing unnoticed inconsistencies to a branch.
 
 * Usage
+
+  This repo contains a script to quickly move the specified hooks into the .git/hooks folder: ~./set-hook <folder>~
+
+  Where =folder= is the name of the folder containing the hooks (eg. ~./set-hook angular~).
+
+* Hooks provided
+
+  For now, only these:
+
+  | Name    | hooks      |
+  |---------+------------|
+  | angular | =pre-push= |
+  | react   | ###        |
+  | node    | ###        |
+  | node/TS | ###        |
+  | ruby    | ###        |
