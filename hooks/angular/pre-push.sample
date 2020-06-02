@@ -1,0 +1,23 @@
+#!/bin/sh
+
+# This hook verifies whether the staged files are valid, and compile successfully
+# before pushing it to the remote branch.
+
+rules=(
+	'ng build',
+	'ng test'
+)
+
+for rule in rules; do
+	`${rule}`
+
+	if [ $? -eq 0 ]; then
+		printf "${rule}... \e[32mOK[0m\n"
+	else
+		printf "${rule}... \e[31mFAIL[0m\n"
+		exit 1
+	fi
+done
+
+echo "Successfully passed all rules"
+exit 0
