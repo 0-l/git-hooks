@@ -1,12 +1,16 @@
 #+TITLE: Git hooks
 
-(WIP) Custom git hooks for various setups, mainly to prevent myself from pushing unnoticed inconsistencies to a branch.
+Custom git hooks for various setups, mainly to prevent myself from pushing unnoticed inconsistencies to a branch.
 
 * Usage
+
+  Clone this repo into the root of the repository that you want to apply the hooks to: ~git clone https://github.com/0-l/git-hooks && cd git-hooks/~
 
   This repo contains a script to quickly move the specified hooks into the .git/hooks folder: ~./set-hook <folder>~
 
   Where =folder= is the name of the folder containing the hooks (eg. ~./set-hook angular~).
+
+  ~.set-hook~ will also remove ~git-hooks/~ from the list of untracked files.
 
 * Hooks provided
 
