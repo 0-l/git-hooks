@@ -7,21 +7,12 @@ rules=(
 	'ng build --prod',
 	'ng lint',
 	'npm run build',
-	'npm run test-ci'
+	'npm run test-ci',
 )
 
-for rule in $rules; do
-	`${rule}`
-	# TODO: grep for 'fdescribe'
-	# TODO: check if karma.conf.js is committed
+# TODO: grep for 'fdescribe'
+# TODO: check if karma.conf.js is committed
 
-	if [ $? -eq 0 ]; then
-		printf "${rule}... \e[32mOK\e[0m\n"
-	else
-		printf "${rule}... \e[31mFAIL\e[0m\n"
-		exit 1
-	fi
-done
+. ./exec-rules --source-only
 
-echo "Successfully passed all rules, pushing"
 exit 0

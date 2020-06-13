@@ -1,0 +1,11 @@
+#!/bin/sh
+
+# This hook verifies whether the files about to be commited
+
+rules=(
+	'git status | grep /karma\.conf\.js/'
+)
+
+. ./exec-rules --source-only
+
+exit 0

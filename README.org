@@ -12,10 +12,10 @@
 
   For now, only these:
 
-  | Name    | hooks      |
-  |---------+------------|
-  | angular | =pre-push= |
-  | react   | ###        |
-  | node    | ###        |
-  | node/TS | ###        |
-  | ruby    | ###        |
+  | Name    | hooks                   |
+  |---------+-------------------------|
+  | angular | =pre-push= =pre-commit= |
+  | react   | ###                     |
+  | node    | ###                     |
+  | node/TS | ###                     |
+  | ruby    | ###                     |
