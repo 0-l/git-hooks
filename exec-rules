@@ -1,12 +1,15 @@
 #!/bin/sh
 
 for rule in "${rules[@]}"; do
-	eval "$rule"
+	command="${rule%%:*}"
+	message="${rule##*:}"
+
+	eval "$command"
 
 	if [ $? -eq 0 ]; then
-		printf "\e[1m${rule}...\e[0m \e[32mOK\e[0m\n"
+		printf "\e[1m${command}...\e[0m \e[32mOK\e[0m\n"
 	else
-		printf "\e[1m${rule}...\e[0m \e[31mFAIL\e[0m\n"
+		printf "\e[1m${command}...\e[0m \e[31mFAIL: ${message}\e[0m\n"
 		exit 1
 	fi
 done

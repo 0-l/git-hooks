@@ -3,11 +3,9 @@
 # This hook verifies whether the files about to be commited are invalid.
 
 rules=(
-	'git status | (! grep -q "karma\.conf\.js")'
-	'! git grep -q "fdescribe"'
+	'git status | (! grep -q "karma\.conf\.js"):Remove karma.conf.js'
+	'! git grep -q "fdescribe":A unit test with fdescribe is being committed, fix it'
 )
-
-# TODO: grep for 'fdescribe'
 
 . $(dirname "$0")/exec-rules --source-only
 

@@ -4,10 +4,10 @@
 # before pushing it to the remote branch.
 
 rules=(
-	'ng build --prod',
-	'ng lint',
-	'npm run build',
-	'npm run test-ci',
+	'ng build --prod:Angular project failed to build',
+	'ng lint:Angular project does not follow the style guide',
+	'npm run build:',
+	'npm run test-ci:',
 )
 
 . $(dirname "$0")/exec-rules --source-only
