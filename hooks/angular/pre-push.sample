@@ -5,13 +5,10 @@
 
 PROJECT_DIR=$(find $(dirname "$0")/../.. -name "node_modules" -type d -print -quit)/../
 
-cd $PROJECT_DIR
-
 rules=(
-	'ng build --prod:Angular project failed to build'
-	'ng lint:Angular project does not follow the style guide'
-#	'npm run build:',
-#	'npm run test-ci:',
+	"pushd $PROJECT_DIR && ng build --prod && popd:Angular project failed to build"
+#	"pushd $PROJECT_DIR && ng lint && popd:Angular project does not follow the style guide"
+	"pushd $PROJECT_DIR && npm run test-ci && popd:Unit tests are failing"
 )
 
 . $(dirname "$0")/exec-rules --source-only
