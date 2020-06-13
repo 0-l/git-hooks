@@ -1,0 +1,11 @@
+#!/bin/sh
+
+# This hook shows me what I just commited
+
+rules=(
+	'git show --stat:Unable to show latest diff'
+)
+
+. $(dirname "$0")/exec-rules --source-only
+
+exit 0
