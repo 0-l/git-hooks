@@ -1,14 +1,14 @@
 #!/bin/sh
 
-for rule in $rules; do
+for rule in "${rules[@]}"; do
 	eval "$rule"
 
 	if [ $? -eq 0 ]; then
-		printf "${rule}... \e[32mOK\e[0m\n"
+		printf "\e[1m${rule}...\e[0m \e[32mOK\e[0m\n"
 	else
-		printf "${rule}... \e[31mFAIL\e[0m\n"
+		printf "\e[1m${rule}...\e[0m \e[31mFAIL\e[0m\n"
 		exit 1
 	fi
 done
 
-echo "Successfully passed all rules, pushing"
+echo "Successfully passed all rules!"

@@ -10,9 +10,6 @@ rules=(
 	'npm run test-ci',
 )
 
-# TODO: grep for 'fdescribe'
-# TODO: check if karma.conf.js is committed
-
-. ./exec-rules --source-only
+. $(dirname "$0")/exec-rules --source-only
 
 exit 0

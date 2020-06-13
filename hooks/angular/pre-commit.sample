@@ -1,11 +1,14 @@
 #!/bin/sh
 
-# This hook verifies whether the files about to be commited
+# This hook verifies whether the files about to be commited are invalid.
 
 rules=(
-	'git status | grep /karma\.conf\.js/'
+	'git status | (! grep -q "karma\.conf\.js")'
+	'! git grep -q "fdescribe"'
 )
 
-. ./exec-rules --source-only
+# TODO: grep for 'fdescribe'
+
+. $(dirname "$0")/exec-rules --source-only
 
 exit 0
